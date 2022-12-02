@@ -1,0 +1,27 @@
+.LabelFilter {
+    display: flex;
+    margin-left: 50px;
+    margin-bottom: 100px;
+    width: 500px;
+    align-items: center;
+
+
+}
+.FilterInput {
+    align-items: center;
+    margin-left: 30px;
+    height: 30px;
+}
+.ButtonFilter {
+        margin-left: 60px;
+        width: 100px;
+        height: 50px;
+        margin-left: auto;
+        margin-right: auto;
+        border: 5px solid yellowgreen;
+        border-radius: 50%;
+        background-color: green;
+        color: yellowgreen;
+        font-weight: 900;
+        font-size: 16px;
+}
