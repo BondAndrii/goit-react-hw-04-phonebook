@@ -14,8 +14,9 @@ class Form extends Component {
     handleChange = e => {
         const { name, value } = e.currentTarget;
         this.setState({
+            id: nanoid(),  
             [name]: value,
-            id: nanoid()            
+                      
         });        
         // console.log(this.state);
         // console.log(this.state.id);
