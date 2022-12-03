@@ -1,7 +1,7 @@
 import React, { Component } from "react"; 
-import Form from "./Phonebook/Form";
-import Filter from './Phonebook/Filter'
-import PhoneBook from './Phonebook/Phonebook'
+import Form from "./Phonebook/Form/Form";
+import Filter from './Phonebook/Filter/Filter'
+import ContactList from "./Phonebook/ContactList/ContactList";
 import "./App.css"
 
 class App extends Component {
@@ -12,8 +12,6 @@ class App extends Component {
     {id: 'id-3', name: 'Eden Clements', number: '645-17-79'},
     {id: 'id-4', name: 'Annie Copeland', number: '227-91-26'},
   ],
-  // name: '',
-  // number: '',
   filter:'',
   }
   // handleContactChange = event => {
@@ -36,11 +34,32 @@ class App extends Component {
         contacts: [...contacts, data],
         // name: [...name, data.name],
         // number: [...number, data.number]
+        
       
       }));
-    }
-   
+    }  
   }
+  componentDidMount() {
+    console.log("componentDidMount");
+    const myContactsJson = localStorage.getItem('contacts');
+    console.log('myContactsJson', myContactsJson)
+    const myContactsNormal = JSON.parse(myContactsJson);
+    console.log ('myContactsNormal', myContactsNormal)
+    if (myContactsNormal) {
+      this.setState({ contacts: myContactsNormal });
+    }    
+  }
+  componentDidUpdate(prevProps, prevState) {
+    console.log("componentDidUpdate");
+    if (this.state.contacts.length !== prevState.contacts.length) {
+      console.log("Додаю новий контакт");
+      console.log(this.state.contacts);
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+      
+
+    }
+  }
+  
   doFilter = (e) => {
     this.setState({ filter: e.currentTarget.value });
     console.log(this.state);    
@@ -68,7 +87,7 @@ class App extends Component {
       <div>
         <h2 className="SecondTittle">Контакти</h2>
         <Filter value={filter} onChange={this.doFilter} onDelete={this.doClear } />
-        <PhoneBook contacts={foundAbonent} onDelete={this.deleteContact} />
+        <ContactList contacts={foundAbonent} onDelete={this.deleteContact} />
       </div>
     </div>
   );

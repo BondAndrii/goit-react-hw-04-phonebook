@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./Phonebook.css"
+import "./ContactList.css"
 
-const PhoneBook = ({ contacts, onDelete }) => (
-    <ul className="Phonebook">
-        {contacts.map((contact) => <li className="Phonebook__element" key={contact.id} id={contact.id}>
+const ContactList = ({ contacts, onDelete }) => (
+    <ul className="ContactList">
+        {contacts.map((contact) => <li className="ContactList__element" key={contact.id} id={contact.id}>
             <p className="Text">{contact.name}: {contact.number}</p>
             <button className="Button__element" type="button" onClick={()=> onDelete(contact.id)}>Видали!</button>
         </li>
@@ -12,9 +12,9 @@ const PhoneBook = ({ contacts, onDelete }) => (
     </ul>
 );
 
-export default PhoneBook;
+export default ContactList;
 
-PhoneBook.propTypes = {
+ContactList.propTypes = {
     contacts: PropTypes.arrayOf(PropTypes.shape({
         name: PropTypes.string.isRequired,
         number: PropTypes.number.isRequired,

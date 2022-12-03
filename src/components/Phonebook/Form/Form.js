@@ -24,7 +24,7 @@ class Form extends Component {
     e.preventDefault();
         // console.log("in form before", this.state);
         this.props.priSubmit(this.state);        
-        // console.log("in form after", this.state);
+        console.log("in form after", this.state);
         this.reset();
         
         

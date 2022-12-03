@@ -1,8 +1,8 @@
-.Phonebook {
+.ContactList {
     width: 500px ;
     /* border: 1px solid red; */
 }
-.Phonebook__element {
+.ContactList__element {
     display: flex;
     height: 80px;
     justify-content: space-between;
