@@ -5,9 +5,10 @@ import "./Form.css"
 
 class Form extends Component {
     state = {
+        id:'',
         name: '',
         number:'',
-        id:'',
+        
     }
     nameId = nanoid();
     numberId = nanoid();
@@ -33,7 +34,7 @@ class Form extends Component {
     // console.log("sibmit", this.state.contacts);  
     }
     reset = () => {
-        this.setState({ name: '', number:'', id:'' });
+        this.setState({ id:'', name: '', number:'', });
     };
     render() {
         return (
