@@ -13,56 +13,32 @@ class App extends Component {
     {id: 'id-4', name: 'Annie Copeland', number: '227-91-26'},
   ],
   filter:'',
-  }
-  // handleContactChange = event => {
-  //   console.log(event.currentTarget.value);
-  //   this.setState({contacts: event.currentTarget.value})
-  //   console.log("state", this.state.contacts);
-  //   this.setState({name:event.currentTarget.name})
-  //   console.log(this.state.name);
-  // }  
+  }  
   formSubmitHandler = data => {
-    // console.log("in App", data);
-    // console.log("state before", this.state.contacts)
-    // const newAbon = data.name;
-    if (this.state.contacts.find(contact => contact.name === data.name)) {
+        if (this.state.contacts.find(contact => contact.name === data.name)) {
       const message = `Абонент ${data.name} вже є в книзі`;
       alert(message);  
     }
     else {
       this.setState(({ name, number, contacts }) => ({
         contacts: [...contacts, data],
-        // name: [...name, data.name],
-        // number: [...number, data.number]
-        
-      
-      }));
+        }));
     }  
   }
-  componentDidMount() {
-    console.log("componentDidMount");
-    const myContactsJson = localStorage.getItem('contacts');
-    console.log('myContactsJson', myContactsJson)
-    const myContactsNormal = JSON.parse(myContactsJson);
-    console.log ('myContactsNormal', myContactsNormal)
+  componentDidMount() {    
+    const myContactsJson = localStorage.getItem('contacts');    
+    const myContactsNormal = JSON.parse(myContactsJson);    
     if (myContactsNormal) {
       this.setState({ contacts: myContactsNormal });
     }    
   }
-  componentDidUpdate(prevProps, prevState) {
-    console.log("componentDidUpdate");
-    if (this.state.contacts.length !== prevState.contacts.length) {
-      console.log("Додаю новий контакт");
-      console.log(this.state.contacts);
-      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
-      
-
+  componentDidUpdate(prevProps, prevState) {    
+    if (this.state.contacts!== prevState.contacts) {     
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));     
     }
-  }
-  
+  }  
   doFilter = (e) => {
-    this.setState({ filter: e.currentTarget.value });
-    console.log(this.state);    
+    this.setState({ filter: e.currentTarget.value });       
   }
   doClear = () => {
     this.setState({ filter: '' })

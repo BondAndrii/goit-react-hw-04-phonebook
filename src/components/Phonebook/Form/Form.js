@@ -19,19 +19,17 @@ class Form extends Component {
             [name]: value,
                       
         });        
-        // console.log(this.state);
-        // console.log(this.state.id);
+        
     }
     handleSubmit = e => {
     e.preventDefault();
-        // console.log("in form before", this.state);
+        
         this.props.priSubmit(this.state);        
         console.log("in form after", this.state);
         this.reset();
         
         
-    // this.state.contacts.push(event.currentTarget.value);
-    // console.log("sibmit", this.state.contacts);  
+    
     }
     reset = () => {
         this.setState({ id:'', name: '', number:'', });
