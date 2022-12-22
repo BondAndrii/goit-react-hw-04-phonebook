@@ -6,14 +6,14 @@ import "./Form.css"
 
 export default function Form({priSubmit}) {
     const [id, setId] = useState('');
-    const [names, setNames] = useState('');
+    const [name, setName] = useState('');
     const [number, setNumber] = useState('');
-    const namesId = nanoid();
+    const nameId = nanoid();
     const numberId = nanoid();
 
     function reset() {
         setId('');
-        setNames('');
+        setName('');
         setNumber('');        
     }
     const handleChange = e => {
@@ -21,7 +21,7 @@ export default function Form({priSubmit}) {
         setId(id);
         switch (name) {
             case "names":
-                setNames(value);
+                setName(value);
                 break;
             case "number":
                 setNumber(value);
@@ -44,21 +44,24 @@ export default function Form({priSubmit}) {
     }
     const handleSubmit = e => {
         e.preventDefault();
-        const data = { id, names, number };        
-        priSubmit(data);
+        const data = { id, name, number };        
+        // priSubmit(data);
+        // console.log(data);
+        reset(); 
         console.log(data);
-        reset();      
+        return priSubmit(data);
+        
     }
 return (            
             <form className="Form" onSubmit={handleSubmit}>
-                <label className="Label" htmlFor={namesId}>
+                <label className="Label" htmlFor={nameId}>
                     <p className="Text">Iм'я:</p>
                     <input
                         type="text"
                         name="names"
                         className="Input"
-                        id={namesId}
-                        value={names}
+                        id={nameId}
+                        value={name}
                         onChange={handleChange}
                         placeholder="введи ім'я"
                         pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"

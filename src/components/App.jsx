@@ -19,7 +19,8 @@ class App extends Component {
       const message = `Абонент ${data.name} вже є в книзі`;
       alert(message);  
     }
-    else {
+        else {
+          console.log("in app", this.state)
       this.setState(({ name, number, contacts }) => ({
         contacts: [...contacts, data],
         }));
