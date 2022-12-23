@@ -48,7 +48,7 @@ export default function Form({priSubmit}) {
         // priSubmit(data);
         // console.log(data);
         reset(); 
-        console.log(data);
+        console.log("in form",data);
         return priSubmit(data);
         
     }
