@@ -14,7 +14,7 @@ export default function App() {
 //       { "id": "id-3", "name": "Eden Clements", "number": "645-17-79" },
 //       { "id": "id-4", "name": "Annie Copeland", "number": "227-91-26" }
 // ]
-  const [contacts, setContacts] = useState(JSON.parse(window.localStorage.getItem('contactsArr')) ?? contactsList); 
+  const [contacts, setContacts] = useState(() => (JSON.parse(window.localStorage.getItem('contactsArr')) ?? contactsList)); 
   // didMount, як все запрацює, попробувать ліниву ініціалізацію
   const [filter, setFilter] = useState('');
 
